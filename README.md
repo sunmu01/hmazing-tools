@@ -1,4 +1,4 @@
-# tools
+# Hmazing Tools
 
 > A Vue.js project
 
