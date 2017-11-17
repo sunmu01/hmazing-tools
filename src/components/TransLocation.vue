@@ -30,7 +30,7 @@ export default {
 	name: 'TransLocation',
 	data () {
 		return {
-			position: '39.803906, 116.512255',
+			position: '',
 			latlng: '',
 			origin: '',
 			produce: '',
