@@ -5,6 +5,7 @@
 		<ul class="list-reset">
 			<li><router-link to="/trans-location">Location Transformer</router-link></li>
 			<li><router-link to="/trans-img-src">Image Link Transformer</router-link></li>
+			<li><router-link to="/vendor-map">Venders Management</router-link></li>
 		</ul>
 	</div>
 </template>

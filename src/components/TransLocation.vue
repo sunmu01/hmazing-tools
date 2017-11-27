@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import Layout from './Layout'
+import Layout from '@/components/Layout'
 export default {
 	name: 'TransLocation',
 	data () {
