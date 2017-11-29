@@ -55,7 +55,7 @@ export default {
 	name: 'VendorMap',
 	data () {
 		return {
-			api: 'http://11.11.11.11:9000/',
+			api: 'https://sea.hmazing.com/',
 			vendors: [],
 			modaling: false,
 			item: {
