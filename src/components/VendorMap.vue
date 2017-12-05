@@ -42,7 +42,8 @@
 					<img class="max-h2 p1" :src="item.image">
 				</div>
 				<div class="col col-12 border-box p1 center">
-					<a class="btn btn-primary px4" @click="saveData(item)">Save</a>
+					<a class="btn btn-primary px4 bg-gray" v-if="Saving">Saving</a>
+					<a class="btn btn-primary px4" @click="saveData(item)" v-else>Save</a>
 				</div>
 			</div>
 		</div>
@@ -58,6 +59,7 @@ export default {
 			api: 'https://sea.hmazing.com/',
 			vendors: [],
 			modaling: false,
+			saving: false,
 			item: {
 				id: '',
 				title: '',
@@ -80,6 +82,7 @@ export default {
 		},
 		saveData (v) {
 			let self = this
+			self.saving = true
 			let image = v.image == '' ? null : v.image
 			let desc = v.desc == '' ? null : v.desc
 			let data = JSON.stringify({
@@ -98,6 +101,7 @@ export default {
 			}).then((data) => {
 				console.log(data)
 				self.modaling = false
+				self.saving = false
 			})
 		},
 		fetchData () {
