@@ -4,6 +4,7 @@ import Hello from '@/components/Hello'
 import TransLocation from '@/components/TransLocation'
 import TransImgSrc from '@/components/TransImgSrc'
 import VendorMap from '@/components/VendorMap'
+import LocationMap from '@/components/LocationMap'
 
 Vue.use(Router)
 
@@ -30,6 +31,11 @@ export default new Router({
 			path: '/vendor-map',
 			name: 'VendorMap',
 			component: VendorMap
+		},
+		{
+			path: '/location-map',
+			name: 'LocationMap',
+			component: LocationMap
 		}
 	],
 	scrollBehavior (to, from, savedPosition) {

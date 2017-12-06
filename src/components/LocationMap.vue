@@ -1,23 +1,27 @@
 <template>
 	<layout>
 		<div class="clearfix center p2">
-			<p class="h1">Vendors Management</p>
+			<p class="h1">Locations Management</p>
 			<table>
 				<thead>
 					<tr>
-						<th>Title</th>
-						<th>Products Count</th>
+						<th>Location Name</th>
+						<th>Full Location Name</th>
 						<th>Description</th>
-						<th>Logo</th>
+						<th>Latitude</th>
+						<th>Longitude</th>
+						<th>LatLng</th>
 						<th>#</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr v-for="(v, i) in vendors">
-						<td>{{ v.title }}</td>
-						<td>{{ v.count }}</td>
+					<tr v-for="(v, i) in locations">
+						<td>{{ v.name }}</td>
+						<td>{{ v.long }}</td>
 						<td>{{ v.desc }}</td>
-						<td><img class="w1" :src="v.image"></td>
+						<td>{{ v.lat }}</td>
+						<td>{{ v.lng }}</td>
+						<td>{{ v.ll }}</td>
 						<td><a class="btn" @click="editData(v)">Edit</a></td>
 					</tr>
 				</tbody>
@@ -27,19 +31,28 @@
 		<div class="clearfix fixed top-0 bottom-0 left-0 right-0 border-box p2 flex items-center justify-center flex-wrap content-center bg-darken-4 z1" v-show="modaling">
 			<div class="col-12 max-width-3 p2 bg-white rounded">
 				<div class="col col-12 border-box p1 flex items-start justify-start">
-					<label class="label col-2">Title:</label>
-					<span class="col-10">{{ item.title }}</span>
+					<label class="label col-2">Location Name:</label>
+					<span class="col-10">{{ item.name }}</span>
+				</div>
+				<div class="col col-12 border-box p1 flex items-start justify-start">
+					<label class="label col-2">Full Location Name:</label>
+					<textarea class="textarea m0 col-10" v-model="item.long"></textarea>
 				</div>
 				<div class="col col-12 border-box p1 flex items-start justify-start">
 					<label class="label col-2">Description:</label>
 					<textarea rows="5" class="textarea m0 col-10" v-model="item.desc"></textarea>
 				</div>
 				<div class="col col-12 border-box p1 flex items-start justify-start">
-					<label class="label col-2">Logo:</label>
-					<textarea class="textarea m0 col-10" v-model="item.image"></textarea>
+					<label class="label col-2">Latitude:</label>
+					<input class="col-10 input" type="text" v-model="item.lat">
 				</div>
-				<div class="col col-12 border-box p1 center">
-					<img class="max-h2 p1" :src="item.image">
+				<div class="col col-12 border-box p1 flex items-start justify-start">
+					<label class="label col-2">Longitude:</label>
+					<input class="col-10 input" type="text" v-model="item.lng">
+				</div>
+				<div class="col col-12 border-box p1 flex items-start justify-start">
+					<label class="label col-2">LatLng:</label>
+					<input class="col-10 input" type="text" v-model="item.ll">
 				</div>
 				<div class="col col-12 border-box p1 center">
 					<a class="btn btn-primary px4 bg-gray" v-if="Saving">Saving</a>
@@ -53,19 +66,21 @@
 <script>
 import Layout from '@/components/Layout'
 export default {
-	name: 'VendorMap',
+	name: 'LocationMap',
 	data () {
 		return {
 			api: process.env.API_URL,
-			vendors: [],
+			locations: [],
 			modaling: false,
 			saving: false,
 			item: {
 				id: '',
-				title: '',
-				image: '',
+				name: '',
+				long: '',
 				desc: '',
-				count: 0
+				lat: '',
+				lng: '',
+				ll: ''
 			}
 		}
 	},
@@ -83,19 +98,9 @@ export default {
 		saveData (v) {
 			let self = this
 			self.saving = true
-			let image = v.image == '' ? null : v.image
-			let desc = v.desc == '' ? null : v.desc
-			let data = JSON.stringify({
-				"fields": {
-					"image": { "assign": image },
-					"description": { "assign": desc }
-				}
-			})
-			let params = {
-				method: 'put',
-				body: data
-			}
-			let url = self.api + 'document/v1/hmazing/vendor/docid/' + v.id
+			let data = JSON.stringify(self.locations)
+			let params = { method: 'post', body: data }
+			let url = self.api + 'shweb/uplocmap'
 			fetch(url, params).then((response) => {
 				return response.json()
 			}).then((data) => {
@@ -106,24 +111,9 @@ export default {
 		},
 		fetchData () {
 			let self = this
-			let url = self.api + 'search/?yql=select%20*from%20sources%20vendor%20where%20products_count%3E-1;'
+			let url = self.api + 'trees/locmap.json'
 			let fet = fetch(url).then(self.checkStatus).then((response) => {
-				let arr = response.root.children
-				if (arr) {
-					for (var i in arr) {
-						let image = arr[i].fields.image
-						image = image == 'null' ? '' : image
-						let desc = arr[i].fields.description
-						desc = desc == 'null' ? '' : desc
-						self.vendors.push({
-							id: arr[i].fields.id,
-							title: arr[i].fields.title,
-							image: image,
-							desc: desc,
-							count: arr[i].fields.products_count
-						})
-					}
-				}
+				self.locations = response
 				return response
 			})
 			return fet
