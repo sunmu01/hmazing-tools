@@ -32,3 +32,10 @@ table > tbody > tr:hover {
 .max-h2 {
 	max-height: 200px;
 }
+.mt-2b1 {
+	margin: -2rem 0 1rem 0;
+}
+.btn-close {
+	font-weight: 300;
+	font-size: 2rem;
+}

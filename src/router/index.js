@@ -1,14 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Hello from '@/components/Hello'
-// import TransLocation from '@/components/TransLocation'
-// import TransImgSrc from '@/components/TransImgSrc'
-// import VendorMap from '@/components/VendorMap'
-// import LocationMap from '@/components/LocationMap'
-const TransLocation = () => import('@/components/TransLocation')
-const TransImgSrc = () => import('@/components/TransImgSrc')
-const VendorMap = () => import('@/components/VendorMap')
-const LocationMap = () => import('@/components/LocationMap')
+import Login from '@/components/Login'
+import TransLocation from '@/components/TransLocation'
+import TransImgSrc from '@/components/TransImgSrc'
+import VendorsMap from '@/components/VendorsMap'
+import LocationMap from '@/components/LocationMap'
+import VespaRefeed from '@/components/VespaRefeed'
 
 Vue.use(Router)
 
@@ -19,27 +17,44 @@ export default new Router({
 		{
 			path: '/',
 			name: 'Hello',
-			component: Hello
+			component: Hello,
+			meta: { auth: false }
+		},
+		{
+			path: '/login',
+			name: 'Login',
+			component: Login,
+			meta: { auth: false }
 		},
 		{
 			path: '/trans-location',
 			name: 'TransLocation',
-			component: TransLocation
+			component: TransLocation,
+			meta: { auth: false }
 		},
 		{
 			path: '/trans-img-src',
 			name: 'TransImgSrc',
-			component: TransImgSrc
+			component: TransImgSrc,
+			meta: { auth: false }
 		},
 		{
-			path: '/vendor-map',
-			name: 'VendorMap',
-			component: VendorMap
+			path: '/vendors-map',
+			name: 'VendorsMap',
+			component: VendorsMap,
+			meta: { auth: true }
 		},
 		{
 			path: '/location-map',
 			name: 'LocationMap',
-			component: LocationMap
+			component: LocationMap,
+			meta: { auth: true }
+		},
+		{
+			path: '/vespa-refeed',
+			name: 'VespaRefeed',
+			component: VespaRefeed,
+			meta: { auth: true }
 		}
 	],
 	scrollBehavior (to, from, savedPosition) {

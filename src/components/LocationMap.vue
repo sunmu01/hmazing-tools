@@ -83,7 +83,6 @@ export default {
 	name: 'LocationMap',
 	data () {
 		return {
-			api: process.env.API_URL,
 			locations: [],
 			item: {
 				id: '',
@@ -95,13 +94,12 @@ export default {
 				ll: ''
 			},
 			modaling: false,
-			saving: false
+			saving: false,
+			adding: false
 		}
 	},
 	created () {
-		this.fetchData().then((response) => {
-			console.log(response)
-		})
+		this.fetchData()
 	},
 	methods: {
 		getPlace (address, place, id) {
@@ -129,11 +127,15 @@ export default {
 		},
 		closeModal () {
 			let self = this
-			self.locations.pop()
+			if (self.adding) {
+				self.locations.pop()
+				self.adding = false
+			}
 			self.modaling = false
 		},
 		addData () {
 			let self = this
+			self.adding = true
 			self.locations.push({
 				id: '',
 				name: '',
@@ -155,38 +157,27 @@ export default {
 		saveData (v) {
 			let self = this
 			self.saving = true
-			let data = JSON.stringify(self.locations)
-			let params = {
-				method: 'post',
-				body: data
-			}
-			let url = self.api + 'websh/uplocmap'
-			fetch(url, params).then(self.checkStatus).then((response) => {
-				console.log(response)
-				self.modaling = false
-				self.saving = false
+			self.$http.post('websh/locmap', self.locations).then(({ data }) => {
+				swal({ icon: 'success', title: 'Success' }).then(() => {
+					self.modaling = false
+					self.saving = false
+					self.adding = false
+				})
+			}, (response) => {
+				swal({ icon: 'error', title: 'Oops...' }).then(() => { 
+					self.$router.replace(self.$route.fullPath)
+				})
 			})
 		},
 		fetchData () {
 			let self = this
-			let url = self.api + 'websh/getlocmap'
-			let fet = fetch(url).then(self.checkStatus).then((response) => {
-				self.locations = response
-				return response
+			self.$http.get('websh/locmap').then(({ data }) => {
+				self.locations = data
+			}, (response) => {
+				swal({ icon: 'error', title: 'Oops...' }).then(() => { 
+					self.$router.replace(self.$route.fullPath)
+				})
 			})
-			return fet
-		},
-		checkStatus (response) {
-			if (response.ok && response.status >= 200 && response.status < 300) {
-				var contentType = response.headers.get("content-type")
-				if (contentType && contentType.includes("application/json")) 
-					return response.json()
-				throw new TypeError("Oops, we haven't got JSON!")
-			} else {
-				var error = new Error(response.statusText)
-				error.response = response
-				throw error
-			}
 		}
 	},
 	components: {
@@ -196,12 +187,4 @@ export default {
 }
 </script>
 
-<style scoped>
-.mt-2b1 {
-	margin: -2rem 0 1rem 0;
-}
-.btn-close {
-	font-weight: 300;
-	font-size: 2rem;
-}
-</style>
+<style scoped></style>
