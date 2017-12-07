@@ -42,8 +42,8 @@
 					<img class="max-h2 p1" :src="item.image">
 				</div>
 				<div class="col col-12 border-box p1 center">
-					<a class="btn btn-primary px4 bg-gray" v-if="Saving">Saving</a>
-					<a class="btn btn-primary px4" @click="saveData(item)" v-else>Save</a>
+					<a class="btn btn-big btn-primary px4 bg-gray" v-if="saving">Saving...</a>
+					<a class="btn btn-big btn-primary px4" @click="saveData(item)" v-else>Save</a>
 				</div>
 			</div>
 		</div>
@@ -142,33 +142,9 @@ export default {
 		}
 	},
 	components: {
-		Layout: Layout
+		Layout
 	}
 }
 </script>
 
-<style scoped>
-table {
-	width: 100%;
-	max-width: 100%;
-	border-spacing: 0;
-	border-collapse: collapse;
-	background-color: transparent;
-}
-table > thead {
-	background-color: #e5e5e5;
-}
-td, th {
-	padding: .5rem;
-	border-top: 1px solid #e5e5e5;
-}
-table > tbody > tr:hover {
-	background-color: #f5f5f5;
-}
-.w1 {
-	max-width: 100px;
-}
-.max-h2 {
-	max-height: 200px;
-}
-</style>
+<style scoped></style>

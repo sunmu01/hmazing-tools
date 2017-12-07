@@ -18,9 +18,6 @@ export default {
 </script>
 
 <style scoped>
-a:hover {
-	color: deeppink;
-}
 ul.list-reset > li {
 	padding: .5rem;
 }

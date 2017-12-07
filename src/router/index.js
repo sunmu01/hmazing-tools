@@ -1,10 +1,14 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Hello from '@/components/Hello'
-import TransLocation from '@/components/TransLocation'
-import TransImgSrc from '@/components/TransImgSrc'
-import VendorMap from '@/components/VendorMap'
-import LocationMap from '@/components/LocationMap'
+// import TransLocation from '@/components/TransLocation'
+// import TransImgSrc from '@/components/TransImgSrc'
+// import VendorMap from '@/components/VendorMap'
+// import LocationMap from '@/components/LocationMap'
+const TransLocation = () => import('@/components/TransLocation')
+const TransImgSrc = () => import('@/components/TransImgSrc')
+const VendorMap = () => import('@/components/VendorMap')
+const LocationMap = () => import('@/components/LocationMap')
 
 Vue.use(Router)
 
