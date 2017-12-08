@@ -6,7 +6,7 @@ html, body {
 a {
 	cursor: pointer;
 }
-a:hover {
+a:not(.btn):hover {
 	color: tomato;
 }
 table {

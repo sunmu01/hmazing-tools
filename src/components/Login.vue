@@ -40,9 +40,7 @@ export default {
 					})
 				}
 			}, (response) => {
-				swal({ icon: 'warning', title: 'Oops...' }).then(() => { 
-					self.$router.replace(self.$route.fullPath)
-				})
+				swal('Oops...', 'Please try again later', 'error')
 			})
 		}
 	},

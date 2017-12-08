@@ -106,15 +106,12 @@ export default {
 			self.saving = true
 			v.id = v.title
 			self.$http.post('websh/vendors', self.vendors).then(({ data }) => {
-				swal({ icon: 'success', title: 'Success' }).then(() => {
-					self.modaling = false
-					self.saving = false
-					self.adding = false
-				})
+				swal('Success', '', 'success')
+				self.modaling = false
+				self.saving = false
+				self.adding = false
 			}, (response) => {
-				swal({ icon: 'error', title: 'Oops...' }).then(() => { 
-					self.$router.replace(self.$route.fullPath)
-				})
+				swal('Oops...', 'Please try again later', 'error')
 			})
 		},
 		fetchData () {
@@ -122,9 +119,7 @@ export default {
 			self.$http.get('websh/vendors').then(({ data }) => {
 				self.vendors = data
 			}, (response) => {
-				swal({ icon: 'error', title: 'Oops...' }).then(() => { 
-					self.$router.replace(self.$route.fullPath)
-				})
+				swal('Oops...', 'Please try again later', 'error')
 			})
 		}
 	},

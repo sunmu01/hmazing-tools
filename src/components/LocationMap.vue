@@ -158,15 +158,12 @@ export default {
 			let self = this
 			self.saving = true
 			self.$http.post('websh/locmap', self.locations).then(({ data }) => {
-				swal({ icon: 'success', title: 'Success' }).then(() => {
-					self.modaling = false
-					self.saving = false
-					self.adding = false
-				})
+				swal('Success', '', 'success')
+				self.modaling = false
+				self.saving = false
+				self.adding = false
 			}, (response) => {
-				swal({ icon: 'error', title: 'Oops...' }).then(() => { 
-					self.$router.replace(self.$route.fullPath)
-				})
+				swal('Oops...', 'Please try again later', 'error')
 			})
 		},
 		fetchData () {
@@ -174,9 +171,7 @@ export default {
 			self.$http.get('websh/locmap').then(({ data }) => {
 				self.locations = data
 			}, (response) => {
-				swal({ icon: 'error', title: 'Oops...' }).then(() => { 
-					self.$router.replace(self.$route.fullPath)
-				})
+				swal('Oops...', 'Please try again later', 'error')
 			})
 		}
 	},
