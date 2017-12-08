@@ -27,11 +27,12 @@
 			<div class="col-12 max-width-3 p2 bg-white rounded">
 				<div class="col col-12 border-box p1 mb2 border-bottom border-silver">
 					<a class="btn p0 gray right btn-close" @click="closeModal">&times;</a>
-					<h3 class="center mb2">Search Place</h3>
+					<h3 class="center mb2" v-if="adding">Add Vendor</h3>
+					<h3 class="center mb2" v-else>Edit Vendor</h3>
 				</div>
 				<div class="col col-12 border-box p1 flex items-start justify-start">
 					<label class="label col-2">Title:</label>
-					<span class="col-10">{{ item.title }}</span>
+					<input class="col-10 input" type="text" v-model="item.title">
 				</div>
 				<div class="col col-12 border-box p1 flex items-start justify-start">
 					<label class="label col-2">Description:</label>
