@@ -3,8 +3,8 @@
 		<div class="clearfix center p2">
 			<p class="h1">Refeed Vespa Feeds</p>
 			<div class="col col-12 border-box p1 center">
-				<a class="btn btn-primary btn-big bg-gray col-12 max-width-1" v-if="pendding == 'project'">Projects Refeeding...</a>
-				<a class="btn btn-primary btn-big bg-orange col-12 max-width-1" v-else @click="refeed('project')">Refeed Projects</a>
+				<a class="btn btn-primary btn-big bg-gray col-12 max-width-1" v-if="pendding == 'product'">Products Refeeding...</a>
+				<a class="btn btn-primary btn-big bg-orange col-12 max-width-1" v-else @click="refeed('product')">Refeed Products</a>
 			</div>
 			<div class="col col-12 border-box p1 center">
 				<a class="btn btn-primary btn-big bg-gray col-12 max-width-1" v-if="pendding == 'collection'">Collections Refeeding...</a>
