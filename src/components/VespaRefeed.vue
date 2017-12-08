@@ -12,7 +12,7 @@
 			</div>
 			<div class="col col-12 border-box p1 center">
 				<a class="btn btn-primary btn-big bg-gray col-12 max-width-1" v-if="pendding == 'category'">Categories Refeeding...</a>
-				<a class="btn btn-primary btn-big bg-yellow col-12 max-width-1" v-else @click="refeed('catetory')">Refeed Categories</a>
+				<a class="btn btn-primary btn-big bg-yellow col-12 max-width-1" v-else @click="refeed('category')">Refeed Categories</a>
 			</div>
 			<div class="col col-12 border-box p1 center gray">
 				<p>Refeed 表示从 Shopify 重新获取数据，并重新发布到 Vespa Search Engine.</p>
