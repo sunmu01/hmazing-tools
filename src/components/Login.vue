@@ -33,7 +33,7 @@ export default {
 				if (data == 'None') {
 					swal('Oops!', 'username or password wrong', 'error')
 				} else {
-					localStorage.setItem('token', data)
+					localStorage.setItem('Token', data)
 					Vue.http.headers.common['Token'] = data
 					swal({ icon: 'success', title: 'Success' }).then(() => {
 						self.$router.replace('/')
