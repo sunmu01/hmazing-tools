@@ -8,7 +8,7 @@ Vue.use(VueResource)
 
 Vue.http.options.root = process.env.API_URL
 Vue.http.headers.common['Accept'] = 'application/json'
-Vue.http.headers.common['Token'] = localStorage.getItem('token')
+Vue.http.headers.common['Token'] = localStorage.getItem('Token')
 
 Vue.http.interceptors.push((request, next) => {
 	next((response) => {

@@ -10,7 +10,7 @@ import VespaRefeed from '@/components/VespaRefeed'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
 	mode: 'history',
 	base: '/tools/',
 	routes: [
@@ -30,13 +30,13 @@ export default new Router({
 			path: '/trans-location',
 			name: 'TransLocation',
 			component: TransLocation,
-			meta: { auth: false }
+			meta: { auth: true }
 		},
 		{
 			path: '/trans-img-src',
 			name: 'TransImgSrc',
 			component: TransImgSrc,
-			meta: { auth: false }
+			meta: { auth: true }
 		},
 		{
 			path: '/vendors-map',
@@ -72,3 +72,15 @@ export default new Router({
 		}
 	}
 })
+
+// Router Before Each Configuration
+router.beforeEach((to, from, next) => {
+  // Require Authenticate
+  if (to.meta.auth && !localStorage.getItem('Token')) {
+      next({ path: '/login' })
+  } else {
+    next()
+  }
+})
+
+export default router
