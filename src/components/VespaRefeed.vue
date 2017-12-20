@@ -16,9 +16,9 @@
 			</div>
 			<div class="col col-12 border-box p1 center gray">
 				<p>请按照以上 1、2、3 的顺序 Refeed.</p>
-				<p>如果没有新建带 > 的 Collection，则 1 不用执行.</p>
-				<p>如果没有新建 Collection，则 2 不用执行.</p>
-				<p>如果没有新建 Product，则 3 不用执行.</p>
+				<p>如果没有新建或修改或删除带 > 的 Collection，则 1 不用执行.</p>
+				<p>如果没有新建或修改或删除 Collection，则 2 不用执行.</p>
+				<p>如果没有新建或修改或删除 Product，则 3 不用执行.</p>
 				<p>Refeed 表示从 Shopify 重新获取数据，并重新发布到 Vespa Search Engine.</p>
 				<p>如果你不确定或不知道 Refeed 是什么意思，或者不清楚应该执行哪个或哪几个，请联系管理员。（见页面底部）</p>
 			</div>
