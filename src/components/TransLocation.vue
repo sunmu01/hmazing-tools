@@ -41,11 +41,11 @@ export default {
 				swal('您输入的坐标信息有错', '请检查您的输入是否正确', 'error')
 			}
 		},
-		copys (alt, loc) {
+		copys (loc) {
 			if (this.$clipboard(loc)) {
-				swal(alt + '坐标已复制成功', loc, 'success')
+				swal('坐标已复制成功', loc, 'success')
 			} else {
-				swal(alt + '坐标复制失败', '请刷新重试', 'error')
+				swal('坐标复制失败', '请刷新重试', 'error')
 			}
 		}
 	},
