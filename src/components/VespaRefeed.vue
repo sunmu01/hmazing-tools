@@ -3,16 +3,16 @@
 		<div class="clearfix center p2">
 			<p class="h1">Refeed Vespa Feeds</p>
 			<div class="col col-12 border-box p1 center">
-				<a class="btn btn-primary btn-big bg-gray col-12 max-width-1" v-if="pendding == 'collection'">1. Collections Refeeding...</a>
-				<a class="btn btn-primary btn-big bg-teal col-12 max-width-1" v-else @click="refeed('collection')">Refeed Collections</a>
+				<a class="btn btn-primary btn-big bg-gray col-12 max-width-1" v-if="pendding == 'collection'">Collections Refeeding...</a>
+				<a class="btn btn-primary btn-big bg-teal col-12 max-width-1" v-else @click="refeed('collection')">1. Refeed Collections</a>
 			</div>
 			<div class="col col-12 border-box p1 center">
-				<a class="btn btn-primary btn-big bg-gray col-12 max-width-1" v-if="pendding == 'product'">2. Products Refeeding...</a>
-				<a class="btn btn-primary btn-big bg-orange col-12 max-width-1" v-else @click="refeed('product')">Refeed Products</a>
+				<a class="btn btn-primary btn-big bg-gray col-12 max-width-1" v-if="pendding == 'product'">Products Refeeding...</a>
+				<a class="btn btn-primary btn-big bg-orange col-12 max-width-1" v-else @click="refeed('product')">2. Refeed Products</a>
 			</div>
 			<div class="col col-12 border-box p1 center">
-				<a class="btn btn-primary btn-big bg-gray col-12 max-width-1" v-if="pendding == 'category'">3. Categories Refeeding...</a>
-				<a class="btn btn-primary btn-big bg-yellow col-12 max-width-1" v-else @click="refeed('category')">Refeed Categories</a>
+				<a class="btn btn-primary btn-big bg-gray col-12 max-width-1" v-if="pendding == 'category'">Categories Refeeding...</a>
+				<a class="btn btn-primary btn-big bg-yellow col-12 max-width-1" v-else @click="refeed('category')">3. Refeed Categories</a>
 			</div>
 			<div class="col col-12 border-box p1 center gray">
 				<p>请按照以上 1、2、3 的顺序 Refeed.</p>
