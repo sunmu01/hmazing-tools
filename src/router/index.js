@@ -75,12 +75,19 @@ const router = new Router({
 
 // Router Before Each Configuration
 router.beforeEach((to, from, next) => {
-  // Require Authenticate
-  if (to.meta.auth && !localStorage.getItem('Token')) {
-      next({ path: '/login' })
-  } else {
-    next()
-  }
+	if (process.env.NODE_ENV == 'production') {
+		// Redirect http: to https:
+		let lo = window.location
+		if ('https:' != lo.protocol) {
+			window.location.href = 'https://' + lo.host + lo.pathname
+		}
+	}
+	// Require Authenticate
+	if (to.meta.auth && !localStorage.getItem('Token')) {
+			next({ path: '/login' })
+	} else {
+		next()
+	}
 })
 
 export default router

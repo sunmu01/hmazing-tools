@@ -43,7 +43,7 @@ export default {
 		refeed (t) {
 			let self = this
 			self.pendding = t
-			self.$http.get('websh/refeed?t=' + t).then(({ data }) => {
+			self.$http.get('/websh/refeed?t=' + t).then(({ data }) => {
 				self.pendding = ''
 				if (data == 0) swal('Success', '', 'success')
 				else swal('Oops...', 'Please try again later', 'error')

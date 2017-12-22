@@ -29,7 +29,7 @@ export default {
 	methods: {
 		login () {
 			let self = this
-			self.$http.post('websh/login', self.user).then(({ data }) => {
+			self.$http.post('/websh/login', self.user).then(({ data }) => {
 				if (data == 'None') {
 					swal('Oops!', 'username or password wrong', 'error')
 				} else {

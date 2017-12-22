@@ -106,7 +106,7 @@ export default {
 			let self = this
 			self.saving = true
 			v.id = v.title
-			self.$http.post('websh/vendors', self.vendors).then(({ data }) => {
+			self.$http.post('/websh/vendors', self.vendors).then(({ data }) => {
 				swal('Success', '', 'success')
 				self.modaling = false
 				self.saving = false
@@ -117,7 +117,7 @@ export default {
 		},
 		fetchData () {
 			let self = this
-			self.$http.get('websh/vendors').then(({ data }) => {
+			self.$http.get('/websh/vendors').then(({ data }) => {
 				self.vendors = data
 			}, (response) => {
 				swal('Oops...', 'Please try again later', 'error')

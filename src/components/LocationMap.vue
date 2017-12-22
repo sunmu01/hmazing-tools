@@ -157,7 +157,7 @@ export default {
 		saveData (v) {
 			let self = this
 			self.saving = true
-			self.$http.post('websh/locmap', self.locations).then(({ data }) => {
+			self.$http.post('/websh/locmap', self.locations).then(({ data }) => {
 				swal('Success', '', 'success')
 				self.modaling = false
 				self.saving = false
@@ -168,7 +168,7 @@ export default {
 		},
 		fetchData () {
 			let self = this
-			self.$http.get('websh/locmap').then(({ data }) => {
+			self.$http.get('/websh/locmap').then(({ data }) => {
 				self.locations = data
 			}, (response) => {
 				swal('Oops...', 'Please try again later', 'error')
