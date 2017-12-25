@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Hello from '@/components/Hello'
 import Login from '@/components/Login'
+import MceEditor from '@/components/MceEditor'
 import TransLocation from '@/components/TransLocation'
 import TransImgSrc from '@/components/TransImgSrc'
 import VendorsMap from '@/components/VendorsMap'
@@ -27,16 +28,22 @@ const router = new Router({
 			meta: { auth: false }
 		},
 		{
+			path: '/mce-editor',
+			name: 'MceEditor',
+			component: MceEditor,
+			meta: { auth: false }
+		},
+		{
 			path: '/trans-location',
 			name: 'TransLocation',
 			component: TransLocation,
-			meta: { auth: true }
+			meta: { auth: false }
 		},
 		{
 			path: '/trans-img-src',
 			name: 'TransImgSrc',
 			component: TransImgSrc,
-			meta: { auth: true }
+			meta: { auth: false }
 		},
 		{
 			path: '/vendors-map',

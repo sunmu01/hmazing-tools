@@ -3,6 +3,7 @@
 		<h1 class="p1">Hmazing Tools</h1>
 		<h3 class="regular">This is a tool collection for Hmazing Shopify Admins</h3>
 		<ul class="list-reset">
+			<li><router-link to="/mce-editor">Full Text Editor</router-link></li>
 			<li><router-link to="/trans-location">Location Transformer</router-link></li>
 			<li><router-link to="/trans-img-src">Image Link Transformer</router-link></li>
 			<li><router-link to="/vendors-map">Venders Management</router-link></li>
